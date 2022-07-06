@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import java.util.Random;
@@ -17,8 +18,19 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void selcionarBotao(View v) {
-        int numero = new Random().nextInt(11);
+        String resultado;
+        int number;
+
+        EditText inputNumber = findViewById(R.id.inputNumber);
+        number = Integer.parseInt(inputNumber.getText().toString());
+
+        int randon = new Random().nextInt(11);
+
         TextView txt = findViewById(R.id.txtResultado);
-        txt.setText("O número sorteado foi: " + numero);
+        resultado = "ERROU";
+        if(number == randon) {
+            resultado = "ACERTOU";
+        }
+        txt.setText("Você " + resultado + ", o número sorteado foi: " + randon);
     }
 }
